@@ -15,6 +15,20 @@ async function getWeather(lat, lon, locationName){
   // http://api.weatherapi.com/v1/forecast.json?key=<YOUR_API_KEY>&q=07112&days=7
   let url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&days=5&api-no&alerts=no&q=${locationName}`;
   // console.log(url);
+
+
+
+
+
+  //weatherbit.io
+  // const url = `http://api.weatherbit.io/v2.0/forecast/daily/?key=${process.env.WEATHER_API_KEY}&lang=en&lat=${latitude}&lon=${longitude}&days=5`;
+  // console.log(url);
+
+
+
+
+
+
   //set the search into cache to find out if we have previously search for the same weather.
   // console.log('11111',key);
   // if(condition where its not it cache or its been in cache to long and we need to update)
@@ -30,7 +44,8 @@ async function getWeather(lat, lon, locationName){
   }
   //is going send the axios response from the api to function called parseWeather
   //return the data to the server file
-  return true;
+  return cache[key].data;
+  // return true;
 }
 
 
