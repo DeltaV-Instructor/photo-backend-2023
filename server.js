@@ -26,8 +26,17 @@ app.get('/weather', weatherHandler);
 
 function weatherHandler(request, response){
   //take in our front end values and send them to our weather.js and then get back some weather to send to the front end
-  console.log('request.query', request.query.lat, request.query.lon, request.query.locationName);
-  response.status(206).send('WIP');
+  //destructure our request object
+  const {lat, lon, locationName} = request.query;
+  console.log('request.query', lat, lon,locationName);
+  //this is calling the function in our weather file with our arguments
+  weather(lat, lon,locationName)
+    .then(weatherForecasts => response.status(200).send(weatherForecasts))
+    .catch((error) => {
+      console.error(error);
+      response.status(500).send('Sorry, something went wrong!');
+    });
+  // response.status(200).send('WIP');
 }
 
 
