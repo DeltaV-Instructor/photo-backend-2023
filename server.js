@@ -1,13 +1,12 @@
 'use strict';
-
 console.log('server running');
 
 const express = require('express');
 const cors = require('cors');
-
 require('dotenv').config();
 const getPhotos = require('./modules/photo');
-
+const weather = require('./modules/weather.js');
+console.log('is this our function',weather);
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 5005;

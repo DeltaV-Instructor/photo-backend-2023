@@ -1,24 +1,6 @@
 
 
 const axios  = require('axios');
-const express = require('express');
-const app = express();
-// app.get('/photos', async (req,res,next) =>{
-// eslint-disable-next-line no-unused-vars
-// async function getPhotos(req, res, next){
-//   console.log('did we get here!');
-//   try {
-//     let searchQueryFromFrontEnd = req.query.searchQuery;
-//     let url = `https://api.unsplash.com/search/photos?client_id=${process.env.UNSPLASH_API_KEY}&query=${searchQueryFromFrontEnd}`;
-//     let apiResults = await axios.get(url);
-//     let photoResults = apiResults.data.results.map((pic) => {
-//       return new Photos(pic);
-//     });
-//     res.status(200).send(photoResults);
-//   } catch (error) {
-//     next(error);
-//   }
-// }
 
 
 function getPhotos(req, res, next){
@@ -48,11 +30,5 @@ class Photos {
     this.artist = picture.user.name;
   }
 }
-
-
-app.use((error, req, res, next) =>{
-  console.log(error.message);
-  res.status(500).send(error.message);
-});
 
 module.exports = getPhotos;
